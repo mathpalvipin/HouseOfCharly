@@ -1,0 +1,237 @@
+import { useState } from 'react'
+
+const heroSlides = [
+  {
+    title: 'Premium Dry Fruits from Jammu',
+    subtitle: 'Authentic quality, fresh packaging, and fast delivery.',
+    image: 'https://images.unsplash.com/photo-1510626176961-4b37a9891b45?auto=format&fit=crop&w=1200&q=80',
+    buttonText: 'Shop Collection',
+  },
+  {
+    title: 'Handpicked Nuts with Pure Flavor',
+    subtitle: 'From trusted farmers to your home with care.',
+    image: 'https://images.unsplash.com/photo-1600181956655-3a8f5dbb8b1f?auto=format&fit=crop&w=1200&q=80',
+    buttonText: 'Explore Products',
+  },
+]
+
+const products = [
+  {
+    name: 'Almonds',
+    price: '₹699 / kg',
+    description: 'Premium California almonds with rich texture.',
+    image: 'https://images.unsplash.com/photo-1517685352821-92cf88aee5a5?auto=format&fit=crop&w=520&q=80',
+  },
+  {
+    name: 'Walnuts',
+    price: '₹899 / kg',
+    description: 'Fresh Kashmir walnuts full of natural goodness.',
+    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=520&q=80',
+  },
+  {
+    name: 'Pistachios',
+    price: '₹1,199 / kg',
+    description: 'Roasted pistachios, crunchy and flavorful.',
+    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=520&q=80',
+  },
+  {
+    name: 'Saffron',
+    price: '₹399 / g',
+    description: 'Pure Kashmiri saffron for premium aroma.',
+    image: 'https://images.unsplash.com/photo-1549662872-0ca81f9bb0c9?auto=format&fit=crop&w=520&q=80',
+  },
+]
+
+const features = [
+  {
+    title: 'Authentic Source',
+    description: 'Handpicked directly from trusted farmers in Jammu.',
+    icon: '🌿',
+  },
+  {
+    title: 'Premium Quality',
+    description: 'Every batch is carefully inspected for the best quality.',
+    icon: '✨',
+  },
+  {
+    title: 'Fresh Packaging',
+    description: 'Packed after order confirmation to preserve freshness.',
+    icon: '📦',
+  },
+  {
+    title: 'Fast Delivery',
+    description: 'Delivered fresh and safe across India.',
+    icon: '🚚',
+  },
+]
+
+function App() {
+  const [slideIndex, setSlideIndex] = useState(0)
+
+  const nextSlide = () => setSlideIndex((slideIndex + 1) % heroSlides.length)
+  const prevSlide = () => setSlideIndex((slideIndex - 1 + heroSlides.length) % heroSlides.length)
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <div>
+            <p className="text-brand-800 text-xl font-semibold">House of Charly</p>
+            <span className="text-sm text-slate-500">The Choice of Every Home</span>
+          </div>
+          <nav className="hidden items-center gap-6 md:flex text-slate-600">
+            <a href="#home" className="hover:text-brand-700">Home</a>
+            <a href="#products" className="hover:text-brand-700">Products</a>
+            <a href="#story" className="hover:text-brand-700">Our Story</a>
+            <a href="#contact" className="hover:text-brand-700">Contact</a>
+          </nav>
+          <button className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-700/20 hover:bg-brand-800">
+            Order Now
+          </button>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-7xl px-6 py-10">
+        <section id="home" className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-center">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm text-brand-700 shadow-sm">
+              Direct from Jammu • No Artificial Processing • Premium Quality
+            </div>
+            <h1 className="text-4xl font-semibold leading-tight text-slate-900 sm:text-5xl">
+              Authentic Dry Fruits Sourced from Jammu.
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600">
+              Bringing you the finest dry fruits & nuts, handpicked from the pristine valleys of Jammu.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="rounded-full bg-brand-700 px-7 py-3 text-white shadow-lg shadow-brand-700/20 hover:bg-brand-800">
+                Shop Collection
+              </button>
+              <button className="rounded-full border border-slate-300 bg-white px-7 py-3 text-slate-700 hover:border-brand-400 hover:text-brand-700">
+                Know Our Story
+              </button>
+            </div>
+          </div>
+          <div className="rounded-[2rem] bg-brand-900/5 p-6 shadow-soft">
+            <img src={heroSlides[slideIndex].image} alt="Hero" className="h-[420px] w-full rounded-[1.75rem] object-cover shadow-xl" />
+            <div className="mt-6 flex items-center justify-between gap-3">
+              <button onClick={prevSlide} className="rounded-full bg-white/90 px-4 py-2 text-brand-700 shadow-sm hover:bg-white">
+                Prev
+              </button>
+              <div className="space-y-1 text-center">
+                <p className="text-sm uppercase tracking-[0.2em] text-slate-500">Featured Story</p>
+                <p className="text-lg font-semibold text-slate-900">{heroSlides[slideIndex].title}</p>
+              </div>
+              <button onClick={nextSlide} className="rounded-full bg-brand-700 px-4 py-2 text-white shadow-sm hover:bg-brand-800">
+                Next
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => (
+            <div key={feature.title} className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-700 shadow-sm">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-2xl">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900">{feature.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{feature.description}</p>
+            </div>
+          ))}
+        </section>
+
+        <section id="products" className="mt-20">
+          <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Featured Dry Fruits</p>
+              <h2 className="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">Shop our premium collection</h2>
+            </div>
+            <div className="flex flex-wrap gap-3 text-sm text-slate-600">
+              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">All Products</span>
+              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Nuts</span>
+              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Saffron</span>
+            </div>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            {products.map((product) => (
+              <article key={product.name} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
+                <img src={product.image} alt={product.name} className="h-64 w-full object-cover" />
+                <div className="space-y-4 p-6">
+                  <p className="text-sm uppercase tracking-[0.28em] text-brand-700">{product.name}</p>
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900">{product.name}</h3>
+                      <p className="text-sm text-slate-600">{product.description}</p>
+                    </div>
+                    <p className="text-lg font-semibold text-brand-700">{product.price}</p>
+                  </div>
+                  <button className="w-full rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-800">
+                    Shop Now
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="story" className="mt-20 rounded-[2rem] bg-brand-50 px-8 py-12 shadow-soft sm:px-12 lg:px-16">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_0.7fr] lg:items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Our Story</p>
+              <h2 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+                Every great home deserves food it can trust.
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
+                House of Charly began with one simple mission—bring authentic dry fruits directly from Jammu to families without compromising quality.
+                Every product is sourced carefully, packed freshly, and delivered with honesty.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl bg-white p-6 shadow-sm">
+                  <p className="text-3xl font-semibold text-brand-700">120k+</p>
+                  <p className="mt-2 text-sm text-slate-600">Happy families served across India.</p>
+                </div>
+                <div className="rounded-3xl bg-white p-6 shadow-sm">
+                  <p className="text-3xl font-semibold text-brand-700">4.9/5</p>
+                  <p className="mt-2 text-sm text-slate-600">Average customer satisfaction rating.</p>
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-3xl bg-white p-6 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">From Jammu</p>
+                <p className="mt-3 text-xl font-semibold text-slate-900">Sourced from trusted orchards.</p>
+              </div>
+              <div className="rounded-3xl bg-white p-6 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Quality Check</p>
+                <p className="mt-3 text-xl font-semibold text-slate-900">Strict inspection before packing.</p>
+              </div>
+              <div className="rounded-3xl bg-white p-6 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Safe Packing</p>
+                <p className="mt-3 text-xl font-semibold text-slate-900">Secure packaging for freshness.</p>
+              </div>
+              <div className="rounded-3xl bg-white p-6 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Doorstep</p>
+                <p className="mt-3 text-xl font-semibold text-slate-900">Delivered right to your home.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="mt-20 rounded-[2rem] bg-white p-10 shadow-soft">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Contact</p>
+              <h3 className="mt-3 text-2xl font-semibold text-slate-900">Stay in touch for new arrivals and offers.</h3>
+            </div>
+            <button className="rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-800">
+              Contact Us
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
+
+export default App
