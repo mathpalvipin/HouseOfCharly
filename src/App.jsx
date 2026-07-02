@@ -191,7 +191,7 @@ function App() {
           </div>
         </section>
 
-        <section className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-10 px-2">
           {features.map((feature) => (
             <div
               key={feature.title}
@@ -206,7 +206,7 @@ function App() {
           ))}
         </section>
 
-        <section id="products" className="mt-20">
+        <section id="products" className="mt-20 lg:px-10 px-2">
           <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-brand-700">
@@ -255,7 +255,7 @@ function App() {
 
         <section
           id="story"
-          className="mt-20 rounded-[2rem] bg-brand-50 px-8 py-12 shadow-soft sm:px-12 lg:px-16"
+          className="mt-20 rounded-[2rem] bg-brand-50 lg:px-10 px-2 py-12 shadow-soft sm:px-12 lg:px-16"
         >
           <div className="grid gap-8 lg:grid-cols-[0.9fr_0.7fr] lg:items-center">
             <div>
@@ -310,7 +310,10 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" className="mt-20 rounded-[2rem] bg-white p-10 shadow-soft">
+        <section
+          id="contact"
+          className="mt-20 rounded-[2rem] bg-white p-10 shadow-soft lg:px-10 px-2"
+        >
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Contact</p>
