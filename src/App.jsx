@@ -183,7 +183,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="absolute left-2 lg:left-10 bottom-5 mt-6 flex flex-nowrap gap-2 sm:gap-3 ">
+            <div className="absolute left-2 lg:left-10 bottom-5 mt-6 flex flex-wrap gap-2 sm:gap-3 ">
               <Feature text="Direct from Jammu" />
               <Feature text="No Artificial Processing" />
               <Feature text="Premium Quality" />
