@@ -1,6 +1,6 @@
 import React from 'react'
 import slider1 from './assets/images/1_slider.png'
-
+import storyImg from './assets/images/story.png'
 const heroSlides = [
   {
     title: 'Premium Dry Fruits from Jammu',
@@ -71,6 +71,34 @@ const features = [
   },
 ]
 
+const processSteps = [
+  {
+    title: 'Farm',
+    description: 'Sourced from the best orchards in Jammu.',
+    icon: '🌾',
+  },
+  {
+    title: 'Selection',
+    description: 'Handpicked & sorted by experts.',
+    icon: '🧑‍🌾',
+  },
+  {
+    title: 'Quality Check',
+    description: 'Strict quality inspections.',
+    icon: '✔️',
+  },
+  {
+    title: 'Packing',
+    description: 'Hygienically packed for freshness.',
+    icon: '📦',
+  },
+  {
+    title: 'Your Home',
+    description: 'Delivered with care to your doorstep.',
+    icon: '🏠',
+  },
+]
+
 function Feature({ text }) {
   return (
     <div className="rounded-full border border-[#6D4425]/20 bg-white/80 lg:px-4 lg:py-2 px-2 py-1 lg:text-sm text-nowrap text-xs font-medium text-[#6D4425] shadow-sm">
@@ -82,7 +110,7 @@ function Feature({ text }) {
 function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 absolute ">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div>
             <p className="text-brand-800 text-xl font-semibold">House of Charly</p>
@@ -152,10 +180,10 @@ function App() {
             />
 
             {/* Gradient for readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#f8f2ea]/95 via-[#f8f2ea]/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#f8f2ea]/55 via-[#f8f2ea]/20 to-transparent" />
 
             {/* Content */}
-            <div className="absolute inset-0 flex items-center">
+            <div className="absolute -left-2 inset-0 flex items-center">
               <div className="max-w-lg px-6 sm:px-10 lg:px-16">
                 {/* <p className="mb-2 text-[9px] font-semibold tracking-[0.3em] uppercase text-amber-900">
                   House of Charly
@@ -190,14 +218,16 @@ function App() {
             </div>
           </div>
         </section>
-
-        <section className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-10 px-2">
+        <div className="mt-12 text-center">
+          <h3 className="text-2xl font-semibold text-slate-900">Trusted by Every Home</h3>
+        </div>
+        <section className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-10 px-2">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-700 shadow-sm"
+              className="rounded-lg border border-slate-200 bg-white p-6 text-slate-700 shadow-sm text-center"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-2xl">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50 text-2xl">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold text-slate-900">{feature.title}</h3>
@@ -206,7 +236,7 @@ function App() {
           ))}
         </section>
 
-        <section id="products" className="mt-20 lg:px-10 px-2">
+        <section id="products" className="mt-12 lg:px-10 px-2">
           <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-brand-700">
@@ -216,35 +246,23 @@ function App() {
                 Shop our premium collection
               </h2>
             </div>
-            <div className="flex flex-wrap gap-3 text-sm text-slate-600">
-              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">
-                All Products
-              </span>
-              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Nuts</span>
-              <span className="rounded-full border border-slate-200 bg-white px-4 py-2">
-                Saffron
-              </span>
-            </div>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {products.map((product) => (
               <article
                 key={product.name}
-                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft"
+                className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft"
               >
-                <img src={product.image} alt={product.name} className="h-64 w-full object-cover" />
-                <div className="space-y-4 p-6">
-                  <p className="text-sm uppercase tracking-[0.28em] text-brand-700">
+                <img src={product.image} alt={product.name} className="h-44 w-full object-cover" />
+                <div className="flex flex-col gap-1 px-4 py-3">
+                  <p className="text-[16px] uppercase tracking-[0.32em] text-brand-700">
                     {product.name}
                   </p>
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900">{product.name}</h3>
-                      <p className="text-sm text-slate-600">{product.description}</p>
-                    </div>
-                    <p className="text-lg font-semibold text-brand-700">{product.price}</p>
+                  <p className=" text-[12px] text-slate-600 truncate">{product.description}</p>
+                  <div className="mt-2">
+                    <p className="text-lg font-bold text-brand-700">{product.price}</p>
                   </div>
-                  <button className="w-full rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-800">
+                  <button className=" mt-4 w-full rounded-lg bg-brand-700 px-3 py-2 text-[11px] font-semibold text-white shadow-sm hover:bg-brand-800">
                     Shop Now
                   </button>
                 </div>
@@ -255,65 +273,66 @@ function App() {
 
         <section
           id="story"
-          className="mt-20 rounded-[2rem] bg-brand-50 lg:px-10 px-2 py-12 shadow-soft sm:px-12 lg:px-16"
+          className="mt-10 rounded-2xl bg-brand-50 px-2 py-12 shadow-soft sm:px-12 lg:px-10 flex flex-col lg:flex-row gap-4"
         >
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_0.7fr] lg:items-center">
+          <div className="flex-1">
+            <img src={storyImg} alt="Our Story" className="w-full h-auto  rounded-sm" />
+          </div>
+          <div className="grid gap-8 lg:items-center flex-1">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Our Story</p>
-              <h2 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900 sm:text-3xl">
                 Every great home deserves food it can trust.
               </h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">
                 House of Charly began with one simple mission—bring authentic dry fruits directly
                 from Jammu to families without compromising quality. Every product is sourced
                 carefully, packed freshly, and delivered with honesty.
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl bg-white p-6 shadow-sm">
-                  <p className="text-3xl font-semibold text-brand-700">120k+</p>
+                <div className="rounded-2xl bg-white p-6 shadow-sm">
+                  <p className="text-2xl font-semibold text-brand-700">120k+</p>
                   <p className="mt-2 text-sm text-slate-600">Happy families served across India.</p>
                 </div>
-                <div className="rounded-3xl bg-white p-6 shadow-sm">
-                  <p className="text-3xl font-semibold text-brand-700">4.9/5</p>
+                <div className="rounded-2xl bg-white p-6 shadow-sm">
+                  <p className="text-2xl font-semibold text-brand-700">4.9/5</p>
                   <p className="mt-2 text-sm text-slate-600">
                     Average customer satisfaction rating.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
-                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">From Jammu</p>
-                <p className="mt-3 text-xl font-semibold text-slate-900">
-                  Sourced from trusted orchards.
-                </p>
-              </div>
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
-                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Quality Check</p>
-                <p className="mt-3 text-xl font-semibold text-slate-900">
-                  Strict inspection before packing.
-                </p>
-              </div>
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
-                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Safe Packing</p>
-                <p className="mt-3 text-xl font-semibold text-slate-900">
-                  Secure packaging for freshness.
-                </p>
-              </div>
-              <div className="rounded-3xl bg-white p-6 shadow-sm">
-                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Doorstep</p>
-                <p className="mt-3 text-xl font-semibold text-slate-900">
-                  Delivered right to your home.
-                </p>
-              </div>
+          </div>
+        </section>
+
+        <section id="process" className="mt-14 rounded-2xl bg-white p-6 shadow-soft sm:p-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 text-center">
+              <p className="text-sm uppercase tracking-[0.35em] text-brand-700">
+                From Jammu to Your Home
+              </p>
+              <h3 className="mt-3 text-2xl font-semibold text-slate-900 sm:text-3xl">
+                The journey of every dry fruit batch.
+              </h3>
+            </div>
+            <div className="grid gap-4 text-center sm:grid-cols-5 sm:items-center">
+              {processSteps.map((step) => (
+                <div
+                  key={step.title}
+                  className="space-y-3 rounded-2xl border border-slate-200 bg-brand-50 p-4"
+                >
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-2xl shadow-sm">
+                    {step.icon}
+                  </div>
+                  <p className="text-sm font-semibold text-slate-900">{step.title}</p>
+                  <p className="text-xs leading-5 text-slate-600">{step.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section
-          id="contact"
-          className="mt-20 rounded-[2rem] bg-white p-10 shadow-soft lg:px-10 px-2"
-        >
+        <section id="contact" className="mt-20 rounded-2xl bg-white p-10 shadow-soft lg:px-10 px-2">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Contact</p>
