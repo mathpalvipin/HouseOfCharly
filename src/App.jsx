@@ -1,6 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import slider1 from './assets/images/1_slider.png'
 import storyImg from './assets/images/story.png'
+import logo from './assets/images/logo.png'
+import almonds from './assets/images/products/almonds.png'
+import cahsew from './assets/images/products/cashew.png'
 const heroSlides = [
   {
     title: 'Premium Dry Fruits from Jammu',
@@ -19,32 +23,28 @@ const heroSlides = [
 
 const products = [
   {
-    name: 'Almonds',
-    price: '₹699 / kg',
-    description: 'Premium California almonds with rich texture.',
-    image:
-      'https://images.unsplash.com/photo-1517685352821-92cf88aee5a5?auto=format&fit=crop&w=520&q=80',
+    id: 1,
+    slug: 'cashew',
+    name: 'Premium Cashews',
+    shortName: 'Cashew',
+    image: cahsew,
+    price: 799,
+    weight: '500g',
+    featured: true,
+    badge: 'Premium',
+    description: 'Premium quality whole cashews sourced from Jammu.',
   },
   {
-    name: 'Walnuts',
-    price: '₹899 / kg',
-    description: 'Fresh Kashmir walnuts full of natural goodness.',
-    image:
-      'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=520&q=80',
-  },
-  {
-    name: 'Pistachios',
-    price: '₹1,199 / kg',
-    description: 'Roasted pistachios, crunchy and flavorful.',
-    image:
-      'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=520&q=80',
-  },
-  {
-    name: 'Saffron',
-    price: '₹399 / g',
-    description: 'Pure Kashmiri saffron for premium aroma.',
-    image:
-      'https://images.unsplash.com/photo-1549662872-0ca81f9bb0c9?auto=format&fit=crop&w=520&q=80',
+    id: 2,
+    slug: 'almonds',
+    name: 'California Almonds',
+    shortName: 'Almonds',
+    image: almonds,
+    price: 699,
+    weight: '500g',
+    featured: true,
+    badge: 'Best Seller',
+    description: 'Crunchy premium almonds packed fresh.',
   },
 ]
 
@@ -107,14 +107,17 @@ function Feature({ text }) {
   )
 }
 
+Feature.propTypes = {
+  text: PropTypes.string.isRequired,
+}
+
 function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div>
-            <p className="text-brand-800 text-xl font-semibold">House of Charly</p>
-            <span className="text-sm text-slate-500">The Choice of Every Home</span>
+            <img src={logo} alt="Logo" className="h-12 w-auto mix-blend-multiply" />
           </div>
           <nav className="hidden items-center gap-6 md:flex text-slate-600">
             <a href="#home" className="hover:text-brand-700">
@@ -130,9 +133,14 @@ function App() {
               Contact
             </a>
           </nav>
-          <button className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-700/20 hover:bg-brand-800">
+          <a
+            href="https://wa.me/917015027484?text=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20order%20premium%20dry%20fruits%20and%20need%20help%20with%20pricing."
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-700/20 hover:bg-brand-800"
+          >
             Order Now
-          </button>
+          </a>
         </div>
       </header>
 
@@ -201,13 +209,19 @@ function App() {
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
-                  <button className="rounded-full bg-[#6D4425] px-4 py-2 text-xs font-medium text-white transition hover:bg-[#55341c] sm:px-5 sm:py-2.5">
+                  <a
+                    href="#products"
+                    className="rounded-full bg-[#6D4425] px-4 py-2 text-xs font-medium text-white transition hover:bg-[#55341c] sm:px-5 sm:py-2.5"
+                  >
                     Shop Collection
-                  </button>
+                  </a>
 
-                  <button className="rounded-full border border-[#6D4425] bg-white/70 px-4 py-2 text-xs font-medium text-[#6D4425] backdrop-blur sm:px-5 sm:py-2.5">
+                  <a
+                    href="#story"
+                    className="rounded-full border border-[#6D4425] bg-white/70 px-4 py-2 text-xs font-medium text-[#6D4425] backdrop-blur sm:px-5 sm:py-2.5"
+                  >
                     Know Our Story
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -247,27 +261,63 @@ function App() {
               </h2>
             </div>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {products.map((product) => (
-              <article
-                key={product.name}
-                className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft"
-              >
-                <img src={product.image} alt={product.name} className="h-44 w-full object-cover" />
-                <div className="flex flex-col gap-1 px-4 py-3">
-                  <p className="text-[16px] uppercase tracking-[0.32em] text-brand-700">
-                    {product.name}
-                  </p>
-                  <p className=" text-[12px] text-slate-600 truncate">{product.description}</p>
-                  <div className="mt-2">
-                    <p className="text-lg font-bold text-brand-700">{product.price}</p>
+          <div className="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            {products.map((product) => {
+              const productTitle =
+                product.title || product.name || product.shortName || 'Premium Dry Fruit'
+              const productDescription =
+                product.description ||
+                product.shortDescription ||
+                product.subtitle ||
+                'Freshly sourced premium dry fruit.'
+              const productPrice = product.price ?? product.amount ?? product.priceText
+              const productImage =
+                product.image || product.img || product.imageUrl || '/products/default.png'
+              const productBadge = product.badge || product.tag || product.label
+              const productWeight = product.weight || product.size || product.quantity || '500g'
+              const orderMessage =
+                product.whatsappText ||
+                `Hello House of Charly, I want to order ${productTitle} (${productPrice || 'this item'}/${productWeight || '500g'}). Please share availability and pricing.`
+
+              return (
+                <article
+                  key={product.id || product.slug || productTitle}
+                  className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft"
+                >
+                  <img src={productImage} alt={productTitle} className="h-44 w-full object-cover" />
+                  <div className="flex flex-1 flex-col gap-1 px-4 py-3">
+                    {productBadge ? (
+                      <span className="w-fit rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-700">
+                        {productBadge}
+                      </span>
+                    ) : null}
+                    <p className="text-[16px] uppercase tracking-[0.32em] text-brand-700">
+                      {productTitle}
+                    </p>
+                    <p className="text-[12px] text-slate-600">{productDescription}</p>
+                    <div className="mt-auto ">
+                      <p className="text-lg font-bold text-brand-700">
+                        {productPrice
+                          ? typeof productPrice === 'number'
+                            ? `₹${productPrice}`
+                            : productPrice
+                          : 'Contact for price'}
+                        {productWeight && <span className="text-xs ">/{productWeight}</span>}
+                      </p>
+
+                      <a
+                        href={`https://wa.me/917015027484?text=${encodeURIComponent(orderMessage)}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex w-full items-center justify-center rounded-lg bg-brand-700 px-3 py-2 text-[11px] font-semibold text-white shadow-sm hover:bg-brand-800"
+                      >
+                        Shop Now
+                      </a>
+                    </div>
                   </div>
-                  <button className=" mt-4 w-full rounded-lg bg-brand-700 px-3 py-2 text-[11px] font-semibold text-white shadow-sm hover:bg-brand-800">
-                    Shop Now
-                  </button>
-                </div>
-              </article>
-            ))}
+                </article>
+              )
+            })}
           </div>
         </section>
 
@@ -332,17 +382,52 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" className="mt-20 rounded-2xl bg-white p-10 shadow-soft lg:px-10 px-2">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <section
+          id="contact"
+          className="mt-20 rounded-2xl bg-white p-8 shadow-soft sm:p-10 lg:px-10 px-2"
+        >
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-brand-700">Contact</p>
               <h3 className="mt-3 text-2xl font-semibold text-slate-900">
-                Stay in touch for new arrivals and offers.
+                Reach our shop for orders, pricing, and bulk requests.
               </h3>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600">
+                We are available for direct enquiries, wholesale orders, and personalised gifting
+                requests. Send us a message and we will get back to you quickly.
+              </p>
+              <div className="mt-6 space-y-3 text-sm text-slate-700">
+                <a
+                  href="tel:+917015027484"
+                  className="flex items-center gap-3 transition hover:text-brand-700"
+                >
+                  <span className="text-lg">📞</span>
+                  <span>+91 70150 27484</span>
+                </a>
+                <a
+                  href="mailto:hello@houseofcharly.com"
+                  className="flex items-center gap-3 transition hover:text-brand-700"
+                >
+                  <span className="text-lg">✉️</span>
+                  <span>hello@houseofcharly.com</span>
+                </a>
+              </div>
             </div>
-            <button className="rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-800">
-              Contact Us
-            </button>
+
+            <div className="rounded-2xl border border-slate-200 bg-brand-50 p-6 shadow-sm">
+              <h4 className="text-lg font-semibold text-slate-900">Need help choosing?</h4>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Share your preferred dry fruits and we will suggest the best options for you.
+              </p>
+              <a
+                href="https://wa.me/917015027484?text=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20order%20premium%20dry%20fruits%20and%20need%20help%20with%20pricing."
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1ea952]"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
         </section>
       </main>
