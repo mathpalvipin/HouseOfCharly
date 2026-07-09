@@ -405,11 +405,11 @@ function App() {
                   <span>+91 70150 27484</span>
                 </a>
                 <a
-                  href="mailto:hello@houseofcharly.com"
+                  href="mailto:Official@houseofcharly.com"
                   className="flex items-center gap-3 transition hover:text-brand-700"
                 >
                   <span className="text-lg">✉️</span>
-                  <span>hello@houseofcharly.com</span>
+                  <span>Official@houseofcharly.com</span>
                 </a>
               </div>
             </div>
