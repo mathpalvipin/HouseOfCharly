@@ -5,6 +5,9 @@ import storyImg from './assets/images/story.png'
 import logo from './assets/images/logo.png'
 import almonds from './assets/images/products/almonds.png'
 import cahsew from './assets/images/products/cashew.png'
+
+const storeLink = 'https://api1.vyaparapp.in/store/houseofcharly'
+
 const heroSlides = [
   {
     title: 'Premium Dry Fruits from Jammu',
@@ -134,7 +137,7 @@ function App() {
             </a>
           </nav>
           <a
-            href="https://wa.me/917015027484?text=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20order%20premium%20dry%20fruits%20and%20need%20help%20with%20pricing."
+            href={storeLink}
             target="_blank"
             rel="noreferrer"
             className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-700/20 hover:bg-brand-800"
@@ -306,7 +309,7 @@ function App() {
                       </p>
 
                       <a
-                        href={`https://wa.me/917015027484?text=${encodeURIComponent(orderMessage)}`}
+                        href={storeLink}
                         target="_blank"
                         rel="noreferrer"
                         className="flex w-full items-center justify-center rounded-lg bg-brand-700 px-3 py-2 text-[11px] font-semibold text-white shadow-sm hover:bg-brand-800"
