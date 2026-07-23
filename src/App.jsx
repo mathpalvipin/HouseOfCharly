@@ -419,14 +419,22 @@ function App() {
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Share your preferred dry fruits and we will suggest the best options for you.
               </p>
-              <a
-                href="https://wa.me/917015027484?text=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20order%20premium%20dry%20fruits%20and%20need%20help%20with%20pricing."
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1ea952]"
-              >
-                Chat on WhatsApp
-              </a>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="https://wa.me/917015027484?text=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20order%20premium%20dry%20fruits%20and%20need%20help%20with%20pricing."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1ea952]"
+                >
+                  Chat on WhatsApp
+                </a>
+                <a
+                  href="mailto:Official@houseofcharly.com?subject=Order%20Enquiry%20for%20House%20of%20Charly&body=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20enquire%20about%20your%20premium%20dry%20fruits."
+                  className="inline-flex items-center justify-center rounded-full border border-[#6D4425] bg-white px-5 py-3 text-sm font-semibold text-[#6D4425] shadow-sm transition hover:bg-[#f8efe8]"
+                >
+                  Email Us
+                </a>
+              </div>
             </div>
           </div>
         </section>
