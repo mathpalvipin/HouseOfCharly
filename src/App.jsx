@@ -4,7 +4,7 @@ import slider1 from './assets/images/1_slider.png'
 import storyImg from './assets/images/story.png'
 import logo from './assets/images/logo.png'
 import almonds from './assets/images/products/almonds.png'
-import cahsew from './assets/images/products/cashew.png'
+import cashew from './assets/images/products/cashew.png'
 
 const storeLink = 'https://api1.vyaparapp.in/store/houseofcharly'
 
@@ -30,7 +30,7 @@ const products = [
     slug: 'cashew',
     name: 'Premium Cashews',
     shortName: 'Cashew',
-    image: cahsew,
+    image: cashew,
     price: 799,
     weight: '500g',
     featured: true,
@@ -139,7 +139,7 @@ function App() {
           <a
             href={storeLink}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-700/20 hover:bg-brand-800"
           >
             Order Now
@@ -311,7 +311,7 @@ function App() {
                       <a
                         href={storeLink}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="flex w-full items-center justify-center rounded-lg bg-brand-700 px-3 py-2 text-[11px] font-semibold text-white shadow-sm hover:bg-brand-800"
                       >
                         Shop Now
@@ -426,7 +426,7 @@ function App() {
                 <a
                   href="https://wa.me/917015027484?text=Hello%20House%20of%20Charly%2C%20I%20would%20like%20to%20order%20premium%20dry%20fruits%20and%20need%20help%20with%20pricing."
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1ea952]"
                 >
                   Chat on WhatsApp
